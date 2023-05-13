@@ -23,15 +23,15 @@ $(NAME): $(OBJS)
           $(CC) $(OBJS) $(LIBFT) $(CFLGS) -o $(NAME)
 
 %o: %.c
-        $(CC) $(CFLAGS) -c $< -o $@
+          $(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-      $(MAKE) clean -C ./libft
-      $(RM) $(OBJS)
+          $(MAKE) clean -C ./libft
+          $(RM) $(OBJS)
 
 fclean: clean
-        $(MAKE) fclean -C ./libft
-        $(RM) $(NAME)
+          $(MAKE) fclean -C ./libft
+          $(RM) $(NAME)
 
 re: fclean all
 
