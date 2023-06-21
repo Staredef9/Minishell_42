@@ -1,0 +1,73 @@
+[33mcommit 6abf9225b3d751116ad4eeab3b65309634679ece[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: Staredef9 <salvettifederico68@gmail.com>
+Date:   Wed Jun 21 12:00:45 2023 +0200
+
+    compresa natura segfault env
+
+[33mcommit 7696ad33845737b39843431e1171ab7f6b6d998a[m
+Author: Neri Cortigiani <newi.corty@gmail.com>
+Date:   Tue Jun 20 16:12:06 2023 +0200
+
+    Piccoli passi su env e main
+
+[33mcommit 1040f1631872f03d6027b95e84933ae2f333faeb[m
+Author: Federico Salvetti <salvettifederico68@gmail.com>
+Date:   Fri Jun 16 22:09:19 2023 +0200
+
+    aggiunta libft
+
+[33mcommit f4390675615a52f35470e1b5342ad887d2e8edcc[m
+Author: Federico Salvetti <salvettifederico68@gmail.com>
+Date:   Thu Jun 15 16:21:41 2023 +0200
+
+    prova2
+
+[33mcommit cbc2cf783cafe68c7d847da6fcfd4216f8770125[m
+Author: Federico Salvetti <salvettifederico68@gmail.com>
+Date:   Thu Jun 15 16:20:24 2023 +0200
+
+    prova
+
+[33mcommit ea2b685da923df996ea52304f1a39eb10f8be2e4[m
+Author: minestrinad <81682977+minestrinad@users.noreply.github.com>
+Date:   Thu Jun 15 16:00:19 2023 +0200
+
+    Update Makefile
+
+[33mcommit eb55e17ceaab8e5442d703ab542bcc2b72b37a29[m
+Author: minestrinad <81682977+minestrinad@users.noreply.github.com>
+Date:   Sat May 13 17:59:51 2023 +0200
+
+    Update Makefile
+
+[33mcommit 7702118e5a4b1dedceaec6d1790b50d73ad51a2a[m
+Author: minestrinad <81682977+minestrinad@users.noreply.github.com>
+Date:   Sat May 13 17:56:05 2023 +0200
+
+    creating Makefile and defining basic rules
+    
+    added rules: all, clean, fclean, re (both for libft and minishell)
+
+[33mcommit cec39578cdda7002cf5756984b577808fa766d29[m
+Author: Staredef <109877856+Staredef9@users.noreply.github.com>
+Date:   Sat May 13 16:11:08 2023 +0200
+
+    Subject
+
+[33mcommit 390fb568a388ef99b817f5e186cdf74e6150c680[m
+Author: Staredef <109877856+Staredef9@users.noreply.github.com>
+Date:   Sat May 6 18:36:23 2023 +0200
+
+    Add files via upload
+
+[33mcommit 4a1c67575679bd8237161ff4028833a9b5ac9a2d[m
+Author: Staredef <109877856+Staredef9@users.noreply.github.com>
+Date:   Sat May 6 18:35:44 2023 +0200
+
+    Update README.md
+
+[33mcommit 3087c4abb4197870f666d95a6ea97342829898c8[m
+Author: Staredef <109877856+Staredef9@users.noreply.github.com>
+Date:   Sat May 6 18:35:00 2023 +0200
+
+    Initial commit
