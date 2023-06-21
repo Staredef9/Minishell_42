@@ -44,7 +44,7 @@ char	**copy_char_matrix(char **src)
 		copy[i] = ft_strdup(src[i]);
 		i++;
 	}
-	src[i] = 0;
+	copy[i] = 0;
 	return (copy);
 }
 
