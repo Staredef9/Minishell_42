@@ -19,6 +19,8 @@ static void	ft_readline(char *print)
 		input = readline(print);
 		if (ft_strncmp(input, "exit", 4) == 0 || !input)
 			break ;
+		else if (ft_strncmp(input, "echo", 4) == 0 || input)
+			ft_printf("\n");
 	}
 }
 
