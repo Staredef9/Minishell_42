@@ -47,7 +47,7 @@ char	**copy_char_matrix(char **src)
 	copy[i] = 0;
 	return (copy);
 }
-
+//Libera la matrice di char
 void 	free_matrix(char **src)
 {
 	int		i;
