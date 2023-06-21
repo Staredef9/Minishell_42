@@ -11,12 +11,14 @@ CFLAGS = -Wall -Wextra -Werror
 
 LIBFT = ./libft/libft.a
 
+LINKS = -lreadline
+
 all: $(NAME)
 
 $(NAME): $(OBJS)
 	make -C ./libft
 	make clean -C ./libft
-	cc -g $(OBJS) $(LIBFT) $(CFLGS) -o $(NAME)
+	cc -g $(OBJS) $(LINKS) $(LIBFT) $(CFLGS) -o $(NAME)
 
 %o: %.c
 	cc -g $(CFLAGS) -c $< -o $@
