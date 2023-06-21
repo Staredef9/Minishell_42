@@ -17,7 +17,7 @@
 //
 
 //Stampa la matrice di char che gli viene passata (env copiata)
-void	ft_print_env(char	**matrix)
+void	ft_print_env(char **matrix)
 {
 	int	i;
 
@@ -27,7 +27,6 @@ void	ft_print_env(char	**matrix)
 		ft_printf("%s\n", matrix[i]);
 		i++;
 	}
-	return (0);
 }
 //Crea una copia della matrice di char che gli viene passata (env)
 char	**copy_char_matrix(char **src)
@@ -45,6 +44,6 @@ char	**copy_char_matrix(char **src)
 		copy[i] = ft_strdup(src[i]);
 		i++;
 	}
-	src[i] = '\0';
+	src[i] = 0;
 	return (copy);
 }

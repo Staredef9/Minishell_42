@@ -3,11 +3,13 @@
 
 int	main(int ac, char **av, char **envp)
 {
-	t_data  *data;
-	int	i;
+	//t_data  data;
+	char	**matrix;
 
-	i = 0;
-	data->envp = copy_char_matrix(envp);
-	//ft_print_env(data->envp);
+	(void)ac;
+	(void)av;
+	matrix = copy_char_matrix(envp);
+	ft_print_env(matrix);
+	ft_printf("gg\n");
 	return (0);
 }
