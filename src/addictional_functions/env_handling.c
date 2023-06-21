@@ -37,13 +37,27 @@ char	**copy_char_matrix(char **src)
 	i = 0;
 	while (src[i])
 		i++;
-	copy = (char **)malloc(sizeof(char) * i + 2);
+	copy = (char **)malloc(sizeof(char) * i + 1);
 	i = 0;
 	while (src[i])
 	{
 		copy[i] = ft_strdup(src[i]);
+		ft_printf("%s\n", copy[i]);
 		i++;
 	}
-	src[i] = 0;
+	src[i] = '\0';
+	ft_printf("FINISH COPY\n");
+	ft_printf("FINISH COPY\n");
+	ft_printf("FINISH COPY\n");
 	return (copy);
+}
+
+void 	free_matrix(char **src)
+{
+	int		i;
+
+	while (src[i++])
+	{
+		free(src[i]);
+	}
 }
