@@ -12,5 +12,5 @@ typedef struct s_data
 
 char	**copy_char_matrix(char **src);
 void	ft_print_env(char	**matrix);
-
+void	free_matrix(char **src);
 #endif

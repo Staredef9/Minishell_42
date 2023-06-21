@@ -14,20 +14,20 @@ LIBFT = ./libft/libft.a
 all: $(NAME)
 
 $(NAME): $(OBJS)
-          make -C ./libft
-          make clean -C ./libft
-          cc -g $(OBJS) $(LIBFT) $(CFLGS) -o $(NAME)
+	make -C ./libft
+	make clean -C ./libft
+	cc -g $(OBJS) $(LIBFT) $(CFLGS) -o $(NAME)
 
 %o: %.c
-          cc -g $(CFLAGS) -c $< -o $@
+	cc -g $(CFLAGS) -c $< -o $@
 
 clean:
-          $(MAKE) clean -C ./libft
-          rm -f $(OBJS)
+	$(MAKE) clean -C ./libft
+	rm -f $(OBJS)
 
 fclean: clean
-          $(MAKE) fclean -C ./libft
-          rm -f $(NAME)
+	$(MAKE) fclean -C ./libft
+	rm -f $(NAME)
 
 re: fclean all
 

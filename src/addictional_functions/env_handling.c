@@ -27,7 +27,7 @@ void	ft_print_env(char	**matrix)
 		ft_printf("%s\n", matrix[i]);
 		i++;
 	}
-	return (0);
+	//return (0);
 }
 //Crea una copia della matrice di char che gli viene passata (env)
 char	**copy_char_matrix(char **src)
@@ -38,13 +38,27 @@ char	**copy_char_matrix(char **src)
 	i = 0;
 	while (src[i])
 		i++;
-	copy = (char **)malloc(sizeof(char) * i + 2);
+	copy = (char **)malloc(sizeof(char) * i + 1);
 	i = 0;
 	while (src[i])
 	{
 		copy[i] = ft_strdup(src[i]);
+		ft_printf("%s\n", copy[i]);
 		i++;
 	}
 	src[i] = '\0';
+	ft_printf("FINISH COPY\n");
+	ft_printf("FINISH COPY\n");
+	ft_printf("FINISH COPY\n");
 	return (copy);
+}
+
+void 	free_matrix(char **src)
+{
+	int		i;
+
+	while (src[i++])
+	{
+		free(src[i]);
+	}
 }
