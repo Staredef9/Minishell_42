@@ -47,6 +47,27 @@ char	**copy_char_matrix(char **src)
 	copy[i] = 0;
 	return (copy);
 }
+//Prende il vecchio envp e la stringa con nome_variabile=valore
+//Restituisce il nuovo envp con la nuova variabile
+char	**add_var_to_env(char **envp, char *var)
+{
+	int		i;
+	char	**new_env;
+
+	i = 0;
+	while (envp[i])
+		i++;
+	new_env = (char **)malloc(sizeof(char *) * i + 2);
+	i = 0;
+	while (envp[i])
+	{
+		new_env[i] = envp[i];
+		i++;
+	}
+	new_env[i] = var;
+	new_env[++i] = 0;
+	return (new_env);
+}
 //Libera la matrice di char
 void 	free_matrix(char **src)
 {
