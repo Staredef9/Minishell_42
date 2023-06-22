@@ -5,6 +5,8 @@
 #include <stdio.h>
 #include <readline/readline.h>
 #include <readline/history.h>
+#include <signal.h>
+#include <sys/ioctl.h>
 #include "../Libft/libft.h"
 
 typedef struct s_data
@@ -16,7 +18,6 @@ typedef struct s_data
 char	**copy_char_matrix(char **src);
 void	ft_print_env(char	**matrix);
 void	free_matrix(char **src);
-static void     ft_readline(char *print);
 char    *ft_return_prompt(void);
 
 

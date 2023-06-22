@@ -9,26 +9,26 @@ OBJS = $(SRCS:.c=.o)
 
 CFLAGS = -Wall -Wextra -Werror
 
-LIBFT = ./libft/libft.a
+LIBFT = ./src/Libft/libft.a
 
 LINKS = -lreadline
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	make -C ./libft
-	make clean -C ./libft
+	make -C ./src/Libft
+	make clean -C ./src/Libft
 	cc -g $(OBJS) $(LINKS) $(LIBFT) $(CFLGS) -o $(NAME)
 
 %o: %.c
 	cc -g $(CFLAGS) -c $< -o $@
 
 clean:
-	$(MAKE) clean -C ./libft
+	$(MAKE) clean -C ./src/Libft
 	rm -f $(OBJS)
 
 fclean: clean
-	$(MAKE) fclean -C ./libft
+	$(MAKE) fclean -C ./src/Libft
 	rm -f $(NAME)
 
 re: fclean all
