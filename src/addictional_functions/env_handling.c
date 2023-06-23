@@ -17,28 +17,29 @@
 //
 
 //Mette il caps lock ad una stringa
-char	*ft_str_toup_case(char *str)
+static char	*ft_str_toup_case(char *str)
 {
-	char	c;
 	int		i;
 
 	i = 0;
-	while (str[i] != '\0')
+	//ft_printf("gg\n");
+	while (str[i])
 	{
-		c = str[i];
-		if (c > 96 && c < 123)
-			str[i] = str[i] - 32;
+		if (str[i] >= 'a' && str[i] <= 'z')
+		{
+			str[i] = (str[i] - 'a') + 'A';
+		//	ft_printf("wp\n");
+		}
 		i++;
+		//ft_printf("wp\n");
 	}
 	return (str);
 }
 //Restituisce la stringa da aggiungere all'envp
 char	*set_str_var(char *var_name, int value)
 {
-	int		i;
 	char	*s_value;
 
-	i = 0;
 	s_value = ft_itoa(value);
 	var_name = ft_str_toup_case(var_name);
 	var_name = ft_strjoin(var_name, "=");
