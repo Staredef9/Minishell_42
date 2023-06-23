@@ -16,6 +16,35 @@
 //
 //
 
+//Mette il caps lock ad una stringa
+char	*ft_str_toup_case(char *str)
+{
+	char	c;
+	int		i;
+
+	i = 0;
+	while (str[i] != '\0')
+	{
+		c = str[i];
+		if (c > 96 && c < 123)
+			str[i] = str[i] - 32;
+		i++;
+	}
+	return (str);
+}
+//Restituisce la stringa da aggiungere all'envp
+char	*set_str_var(char *var_name, int value)
+{
+	int		i;
+	char	*s_value;
+
+	i = 0;
+	s_value = ft_itoa(value);
+	var_name = ft_str_toup_case(var_name);
+	var_name = ft_strjoin(var_name, "=");
+	var_name = ft_strjoin(var_name, s_value);
+	return (var_name);
+}
 //Stampa la matrice di char che gli viene passata (env copiata)
 void	ft_print_env(char **matrix)
 {
@@ -65,7 +94,8 @@ char	**add_var_to_env(char **envp, char *var)
 		i++;
 	}
 	new_env[i] = var;
-	new_env[++i] = 0;
+	i++;
+	new_env[i] = 0;
 	return (new_env);
 }
 //Libera la matrice di char
