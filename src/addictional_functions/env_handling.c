@@ -65,7 +65,8 @@ char	**add_var_to_env(char **envp, char *var)
 		i++;
 	}
 	new_env[i] = var;
-	new_env[++i] = 0;
+	i++;
+	new_env[i] = 0;
 	return (new_env);
 }
 //Libera la matrice di char
