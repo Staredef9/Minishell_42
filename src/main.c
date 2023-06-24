@@ -33,6 +33,9 @@ static void	ft_readline(t_data *data, char *print)
 			break ;
 		else if (ft_strncmp(input, "env", 3) == 0)
 			ft_print_env(data->envp);
+		else if (ft_strncmp(input, "cd", 2) == 0)
+			cd("src");
+		//add_history(input);
 	}
 }
 
