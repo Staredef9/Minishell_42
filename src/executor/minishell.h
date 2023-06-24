@@ -24,4 +24,6 @@ char	**add_var_to_env(char **envp, char *var);
 void	echo(char *argument, char *option);
 //void	builtins_execution(char *input, );
 void	cd(char *argument);
+void	pwd(void);
+
 #endif
