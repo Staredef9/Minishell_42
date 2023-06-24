@@ -7,6 +7,7 @@
 #include <readline/history.h>
 #include <signal.h>
 #include <sys/ioctl.h>
+#include <dirent.h>
 #include "../Libft/libft.h"
 
 typedef struct s_data
@@ -22,5 +23,5 @@ char	*set_str_var(char *var_name, int value);
 char	**add_var_to_env(char **envp, char *var);
 void	echo(char *argument, char *option);
 //void	builtins_execution(char *input, );
-
+void	cd(char *argument);
 #endif

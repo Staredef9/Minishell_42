@@ -15,16 +15,16 @@
 //
 //
 //
-/*
 
+/*
 void	ft_env_search(char *arg, t_data *data)
 {
 //TODO:implementare ricerca valore in variabili
 //gestire sia ricerca di env senza che con $ sign.
 
 
-}*/
-
+}
+*/
 
 
 
