@@ -15,6 +15,21 @@
 //
 //
 //
+/*
+
+void	ft_env_search(char *arg, t_data *data)
+{
+//TODO:implementare ricerca valore in variabili
+//gestire sia ricerca di env senza che con $ sign.
+
+
+}*/
+
+
+
+
+
+
 
 //Mette il caps lock ad una stringa
 static char	*ft_str_toup_case(char *str)

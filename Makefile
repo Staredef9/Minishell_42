@@ -3,7 +3,7 @@
 
 NAME = nutShell
 
-SRCS = $(wildcard ./srcs/parser/*.c) $(wildcard ./srcs/executer/*.c) $(wildcard ./srcs//*.c) $(wildcard ./srcs//*.c)
+SRCS = $(wildcard ./src/parser/*.c)  $(wildcard ./src/addictional_functions/*.c) $(wildcard ./src/main.c)
 
 OBJS = $(SRCS:.c=.o)
 
