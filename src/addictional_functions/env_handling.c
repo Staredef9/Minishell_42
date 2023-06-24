@@ -15,30 +15,44 @@
 //
 //
 //
+/*
+
+void	ft_env_search(char *arg, t_data *data)
+{
+//TODO:implementare ricerca valore in variabili
+//gestire sia ricerca di env senza che con $ sign.
+
+
+}*/
+
+
+
+
+
+
 
 //Mette il caps lock ad una stringa
-static char	*ft_str_toup_case(char *str)
-{
-	int		i;
+// static char	*ft_str_toup_case(char *str)
+// {
+// 	int		i;
 
-	i = 0;
-	while (str[i])
-	{
-		if (str[i] >= 'a' && str[i] <= 'z')
-		{
-			str[i] = (str[i] - 'a') + 'A';
-		}
-		i++;
-	}
-	return (str);
-}
+// 	i = 0;
+// 	while (str[i])
+// 	{
+// 		if (str[i] >= 'a' && str[i] <= 'z')
+// 		{
+// 			str[i] = (str[i] - 'a') + 'A';
+// 		}
+// 		i++;
+// 	}
+// 	return (str);
+// }
 //Restituisce la stringa da aggiungere all'envp
 char	*set_str_var(char *var_name, int value)
 {
 	char	*s_value;
 
 	s_value = ft_itoa(value);
-	var_name = ft_str_toup_case(var_name);
 	var_name = ft_strjoin(var_name, "=");
 	var_name = ft_strjoin(var_name, s_value);
 	return (var_name);
