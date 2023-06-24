@@ -22,16 +22,13 @@ static char	*ft_str_toup_case(char *str)
 	int		i;
 
 	i = 0;
-	//ft_printf("gg\n");
 	while (str[i])
 	{
 		if (str[i] >= 'a' && str[i] <= 'z')
 		{
 			str[i] = (str[i] - 'a') + 'A';
-		//	ft_printf("wp\n");
 		}
 		i++;
-		//ft_printf("wp\n");
 	}
 	return (str);
 }

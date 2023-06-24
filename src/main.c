@@ -47,12 +47,11 @@ int	main(int ac, char **av, char **envp)
 	data = malloc(sizeof(t_data));
 	data->envp = copy_char_matrix(envp);
 	prompt = ft_return_prompt();
-	new_var = set_str_var("gigi", 20);
+	new_var = set_str_var(ft_strdup("gigi"), 20);
 	data->envp = add_var_to_env(data->envp, new_var);
 	ft_readline(data, prompt);
 	//ft_print_env(data->envp);
 	rl_clear_history();
-	free(new_var);
 	free(prompt);
 	free_matrix(data->envp);
 	free(data);
