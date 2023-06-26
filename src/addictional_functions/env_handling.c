@@ -18,14 +18,31 @@
 
 //TODO:implementare ricerca valore in variabili
 //gestire sia ricerca di env senza che con $ sign.
-int	ft_env_search(char *arg, t_data *data)
+
+//restituisce in quale riga della matrice si trova la variabile
+int	var_line(char *var, char **matrix)
 {
 	int	i;
 
 	i = 0;
-	while (data->envp[i])
+	while (matrix[i])
 	{
-		if (ft_strncmp(data->envp[i], arg, ft_strlen(arg)) == 0)
+		if (ft_strncmp(matrix[i], var, ft_strlen(var)) == 0)
+			break ;
+		i++;
+	}
+	return (i);
+}
+//Restituisce 1 se la variabile esiste, 0 se non esiste
+int	ft_env_search(char *arg, char **envp)
+{
+	int	i;
+
+	i = 0;
+	// ft_printf("prima riga: %s\n", envp[0]);
+	while (envp[i])
+	{
+		if (ft_strncmp(envp[i], arg, ft_strlen(arg)) == 0)
 			return (1);
 		i++;
 	}
@@ -83,13 +100,14 @@ char	**add_var_to_env(char **envp, char *var)
 	i = 0;
 	while (envp[i])
 		i++;
-	new_env = (char **)malloc(sizeof(char *) * i + 2);
+	new_env = (char **)malloc(sizeof(char *) * (i + 2));
 	i = 0;
 	while (envp[i])
 	{
 		new_env[i] = envp[i];
 		i++;
 	}
+	//free_matrix(envp);
 	new_env[i] = var;
 	i++;
 	new_env[i] = 0;
