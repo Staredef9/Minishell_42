@@ -18,10 +18,19 @@
 
 //TODO:implementare ricerca valore in variabili
 //gestire sia ricerca di env senza che con $ sign.
-// void	ft_env_search(char *arg, t_data *data)
-// {
+int	ft_env_search(char *arg, t_data *data)
+{
+	int	i;
 
-// }
+	i = 0;
+	while (data->envp[i])
+	{
+		if (ft_strncmp(data->envp[i], arg, ft_strlen(arg)) == 0)
+			return (1);
+		i++;
+	}
+	return (0);
+}
 
 //Restituisce la stringa da aggiungere all'envp
 char	*set_str_var(char *var_name, int value)

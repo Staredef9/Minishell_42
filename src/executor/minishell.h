@@ -15,8 +15,10 @@ typedef struct s_data
 	char	**envp;
 }   t_data;
 
+int		ft_strcmp(char *s1, char *s2);
 char	**copy_char_matrix(char **src);
 void	ft_print_env(char	**matrix);
+int		ft_env_search(char *arg, t_data *data);
 void	free_matrix(char **src);
 char    *ft_return_prompt(void);
 char	*set_str_var(char *var_name, int value);

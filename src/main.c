@@ -34,7 +34,7 @@ static void	ft_readline(t_data *data, char *print)
 		else if (ft_strncmp(input, "env", 3) == 0)
 			ft_print_env(data->envp);
 		else if (ft_strncmp(input, "cd", 2) == 0)
-			cd("src");
+			cd(".");
 		else if (ft_strncmp(input, "pwd", 3) == 0)
 			pwd();
 		//add_history(input);
@@ -45,15 +45,16 @@ int	main(int ac, char **av, char **envp)
 {
 	t_data  *data;
 	char	*prompt;
+	// char	*new_var;
 
 	(void)ac;
 	(void)av;
 	data = malloc(sizeof(t_data));
 	data->envp = copy_char_matrix(envp);
 	prompt = ft_return_prompt();
-	//char  *varname = "gigi";
-	// new_var = set_str_var(ft_strdup("tumamma"), 20);
+	// new_var = set_str_var(ft_strdup("tumamm"), 20);
 	// data->envp = add_var_to_env(data->envp, new_var);
+	// ft_printf("res:%d\n", ft_env_search("tumamma", data));
 	ft_readline(data, prompt);
 	//ft_print_env(data->envp);
 	rl_clear_history();

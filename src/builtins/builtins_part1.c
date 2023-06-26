@@ -17,7 +17,6 @@ void	echo(char *argument, char *option)
 void	cd(char *argument)
 {
 	//spostati di posizione dove dice l'argument, se 
-	
 	//non esiste non fare nulla
 	char path[128];
 	getcwd(path, 128);
@@ -33,16 +32,13 @@ void	cd(char *argument)
 	current_dir = readdir(directory);
 	while (current_dir)
 	{
-		// ft_printf("current:%s....%s\n", current_dir->d_name, argument);
-		if (ft_strncmp(current_dir->d_name, argument, 3) == 0)
+		if (ft_strncmp(current_dir->d_name, argument, ft_strlen(argument)) == 0)
 			break;
 		current_dir = readdir(directory);
 	}
-	// ft_printf("current:%s\n", current_dir->d_name);
 	if (current_dir == NULL)
 		ft_printf("nutShell: cd: %s: No such file or directory\n", argument);
 	char *slash_path = ft_strjoin(path, "/");
-	// ft_printf("gg%s\n", slash_path);
 	char *correct_path = ft_strjoin(slash_path, current_dir->d_name);
 	chdir(correct_path);
 }
