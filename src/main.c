@@ -47,20 +47,18 @@ int	main(int ac, char **av, char **envp)
 {
 	t_data  *data;
 	char	*prompt;
-	char	*new_var;
 
 	(void)ac;
 	(void)av;
 	data = malloc(sizeof(t_data));
 	data->envp = copy_char_matrix(envp);
 	prompt = ft_return_prompt();
-	new_var = set_str_var(ft_strdup("tumamma"), 20);
-	data->envp = add_var_to_env(data->envp, new_var);
+	data->envp = add_var_to_env(data, "tumamma=20");
 	// ft_printf("res:%d\n", ft_env_search("tumamma", data));
 	ft_readline(data, prompt);
 	//ft_print_env(data->envp);
 	rl_clear_history();
-	free(new_var);
+	//free(new_var);
 	free(prompt);
 	free_matrix(data->envp);
 	free(data);
