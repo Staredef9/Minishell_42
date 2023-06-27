@@ -16,36 +16,49 @@
 //
 //
 
-//Mette il caps lock ad una stringa
-static char	*ft_str_toup_case(char *str)
+//TODO:implementare ricerca valore in variabili
+//gestire sia ricerca di env senza che con $ sign.
+
+//restituisce in quale riga della matrice si trova la variabile
+int	var_line(char *var, char **matrix)
 {
-	int		i;
+	int	i;
 
 	i = 0;
-	//ft_printf("gg\n");
-	while (str[i])
+	while (matrix[i])
 	{
-		if (str[i] >= 'a' && str[i] <= 'z')
-		{
-			str[i] = (str[i] - 'a') + 'A';
-		//	ft_printf("wp\n");
-		}
+		if (ft_strncmp(matrix[i], var, ft_strlen(var)) == 0)
+			break ;
 		i++;
-		//ft_printf("wp\n");
 	}
-	return (str);
+	return (i);
 }
-//Restituisce la stringa da aggiungere all'envp
-char	*set_str_var(char *var_name, int value)
+//Restituisce 1 se la variabile esiste, 0 se non esiste
+int	ft_env_search(char *arg, char **envp)
 {
-	char	*s_value;
+	int	i;
 
-	s_value = ft_itoa(value);
-	var_name = ft_str_toup_case(var_name);
-	var_name = ft_strjoin(var_name, "=");
-	var_name = ft_strjoin(var_name, s_value);
-	return (var_name);
+	i = 0;
+	// ft_printf("prima riga: %s\n", envp[0]);
+	while (envp[i])
+	{
+		if (ft_strncmp(envp[i], arg, ft_strlen(arg)) == 0)
+			return (1);
+		i++;
+	}
+	return (0);
 }
+
+//Restituisce la stringa da aggiungere all'envp
+// char	*set_str_var(char *var_name, int value)
+// {
+// 	char	*s_value;
+
+// 	s_value = ft_itoa(value);
+// 	var_name = ft_strjoin(var_name, "=");
+// 	var_name = ft_strjoin(var_name, s_value);
+// 	return (var_name);
+// }
 //Stampa la matrice di char che gli viene passata (env copiata)
 void	ft_print_env(char **matrix)
 {
@@ -79,22 +92,23 @@ char	**copy_char_matrix(char **src)
 }
 //Prende il vecchio envp e la stringa con nome_variabile=valore
 //Restituisce il nuovo envp con la nuova variabile
-char	**add_var_to_env(char **envp, char *var)
+char	**add_var_to_env(t_data *data, char *var)
 {
 	int		i;
 	char	**new_env;
 
 	i = 0;
-	while (envp[i])
+	while (data->envp[i])
 		i++;
-	new_env = (char **)malloc(sizeof(char *) * i + 2);
+	new_env = (char **)malloc(sizeof(char *) * (i + 2));
 	i = 0;
-	while (envp[i])
+	while (data->envp[i])
 	{
-		new_env[i] = envp[i];
+		new_env[i] = ft_strdup(data->envp[i]);
 		i++;
 	}
-	new_env[i] = var;
+	free_matrix(data->envp);
+	new_env[i] = ft_strdup(var);
 	i++;
 	new_env[i] = 0;
 	return (new_env);
