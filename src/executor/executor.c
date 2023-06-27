@@ -14,18 +14,48 @@
 //GESTIONE DELL ORDINE DI ESECUZIONE
 //
 
-
-
-void	execute_builtin(char *builtin)
+int		executor_handler(char **arguments) //o char ***arguments??
 {
+		if (strcmp(arguments[1], "cd") == 1)
+			execute_builtin(arguments);
+		else if (strcmp(arguments[1], "echo") == 1)
+			execute_builtin(arguments);
+		else if (strcmp(arguments[1], "pwd") == 1)
+			execute_builtin(arguments);
+		else if (strcmp(arguments[1], "unset") == 1)
+			execute_builtin(arguments);
+		else if (strcmp(arguments[1], "export") == 1)
+			execute_builtin(arguments);
+		else if (strcmp(arguments[1], "history") == 1)
+			execute_builtin(arguments);
+		else 
+		{
+			execute_command(arguments);
+		}
 
+}
+
+void	execute_builtin(char **builtin)
+{
+		if (strcmp(arguments[1], "cd") == 1)
+			cd(arguments);
+		else if (strcmp(arguments[1], "echo") == 1)
+			echo(arguments);
+		else if (strcmp(arguments[1], "pwd") == 1)
+			pwd(arguments);
+		else if (strcmp(arguments[1], "unset") == 1)
+			unset(arguments);
+		else if (strcmp(arguments[1], "export") == 1)
+			export(arguments);
+		else if (strcmp(arguments[1], "history") == 1)
+			history(arguments);
 	//if else statement che decidono cosa eseguire di questo arg passato	
 	//se builtin == echo 
 	//	allora esegui echo()
 	//	ecc ecc
 }
 
-void	execute_command(char *commandi, char *arg, char **PATH)
+void	execute_command(char *command, char *arg, char **PATH)
 {
 
 
