@@ -49,11 +49,3 @@ void	pwd(void)
 	getcwd(path, 128);
 	ft_printf("%s\n", path);
 }
-
-void	export()
-{
-//questa prende come input stringa in formato NAME=VALUE
-//mette in una matrice didue stringhe name e value 
-//e poi le passa ad env nostro... 
-//env deve essere rimalloccata per ospitare la nuova variabile 
-}//

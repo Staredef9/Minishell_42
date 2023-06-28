@@ -39,7 +39,6 @@ int	ft_env_search(char *arg, char **envp)
 	int	i;
 
 	i = 0;
-	// ft_printf("prima riga: %s\n", envp[0]);
 	while (envp[i])
 	{
 		if (ft_strncmp(envp[i], arg, ft_strlen(arg)) == 0)

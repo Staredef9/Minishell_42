@@ -29,5 +29,6 @@ void	echo(char *argument, char *option);
 void	cd(char *argument);
 void	pwd(void);
 void    unset(char *var, t_data *data);
+void	export(char *comm, t_data *data);
 
 #endif

@@ -39,6 +39,8 @@ static void	ft_readline(t_data *data, char *print)
 			pwd();
 		else if (ft_strncmp(input, "unset", 5) == 0)
 			unset("tumamma", data);
+		else if (ft_strncmp(input, "export", 6) == 0)
+			export("tumamma=20", data);
 		//add_history(input);
 	}
 }
@@ -53,7 +55,7 @@ int	main(int ac, char **av, char **envp)
 	data = malloc(sizeof(t_data));
 	data->envp = copy_char_matrix(envp);
 	prompt = ft_return_prompt();
-	data->envp = add_var_to_env(data, "tumamma=20");
+	// data->envp = add_var_to_env(data, "tumamma=20");
 	// ft_printf("res:%d\n", ft_env_search("tumamma", data));
 	ft_readline(data, prompt);
 	//ft_print_env(data->envp);
