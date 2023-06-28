@@ -32,9 +32,9 @@ static void	ft_readline(t_data *data, char *print)
 		if (!input || ft_strncmp(input, "exit", 4) == 0)
 			break ;
 		else if (ft_strncmp(input, "env", 3) == 0)
-			ft_print_env(data->envp);
+			ft_print_matrix(data->envp);
 		else if (ft_strncmp(input, "cd", 2) == 0)
-			cd(".");
+			cd("src");
 		else if (ft_strncmp(input, "pwd", 3) == 0)
 			pwd();
 		else if (ft_strncmp(input, "unset", 5) == 0)

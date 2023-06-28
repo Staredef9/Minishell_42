@@ -13,11 +13,12 @@
 typedef struct s_data
 {
 	char	**envp;
+	char	**export;
 }   t_data;
 
 int		ft_strcmp(char *s1, char *s2);
 char	**copy_char_matrix(char **src);
-void	ft_print_env(char	**matrix);
+void	ft_print_matrix(char	**matrix);
 int		ft_env_search(char *arg, char **envp);
 int		var_line(char *var, char **matrix);
 void	free_matrix(char **src);

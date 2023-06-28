@@ -59,7 +59,7 @@ int	ft_env_search(char *arg, char **envp)
 // 	return (var_name);
 // }
 //Stampa la matrice di char che gli viene passata (env copiata)
-void	ft_print_env(char **matrix)
+void	ft_print_matrix(char **matrix)
 {
 	int	i;
 
