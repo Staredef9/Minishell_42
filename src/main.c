@@ -40,7 +40,7 @@ static void	ft_readline(t_data *data, char *print)
 		else if (ft_strncmp(input, "unset", 5) == 0)
 			unset("tumamma", data);
 		else if (ft_strncmp(input, "export", 6) == 0)
-			export("tumamma=20", data);
+			export(NULL, data);
 		//add_history(input);
 	}
 }
@@ -54,6 +54,7 @@ int	main(int ac, char **av, char **envp)
 	(void)av;
 	data = malloc(sizeof(t_data));
 	data->envp = copy_char_matrix(envp);
+	data->export = NULL;
 	prompt = ft_return_prompt();
 	// data->envp = add_var_to_env(data, "tumamma=20");
 	// ft_printf("res:%d\n", ft_env_search("tumamma", data));
@@ -62,6 +63,8 @@ int	main(int ac, char **av, char **envp)
 	rl_clear_history();
 	//free(new_var);
 	free(prompt);
+	if (data->export)
+		free_matrix(data->export);
 	free_matrix(data->envp);
 	free(data);
 	return (0);
