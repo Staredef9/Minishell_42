@@ -63,6 +63,8 @@ char	*find_min(t_data *data)
 		if (ft_strcmp(little, data->envp[i]) > 0)
 			little = ft_strdup(data->envp[i]);
 		i++;
+		if (ft_strncmp(data->envp[i], "_=", 2))
+			i++;
 	}
 	return (little);
 }
@@ -79,28 +81,51 @@ char	*find_max(t_data *data)
 		if (ft_strcmp(max, data->envp[i]) < 0)
 			max = ft_strdup(data->envp[i]);
 		i++;
+		if (ft_strncmp(data->envp[i], "_=", 2))
+			i++;
 	}
 	return (max);
 }
 
-char	*find_next(char *min, char *next, char *max, t_data *data)
+char	*find_next(char *min, char *max, t_data *data)
 {
 	int	i;
 
-	if (!next)
-		next = max;
 	i = 0;
 	while (data->envp[i])
 	{
-		if (ft_strcmp(next, data->envp[i]) > 0 && ft_strcmp(min, data->envp[i]) < 0)
-			next = ft_strdup(data->envp[i]);
+		if (ft_strcmp(max, data->envp[i]) > 0 && ft_strcmp(min, data->envp[i]) < 0)
+			max = ft_strdup(data->envp[i]);
 		i++;
 		if (ft_strncmp(data->envp[i], "_=", 2))
 			i++;
 	}
-	if (ft_strcmp(max, next) == 0)
-		return (next);
-	return (find_next(min, next, max, data));
+	return (max);
+}
+
+char	*ft_export_format(char *min)
+{
+	int		i;
+	int		j;
+	char	*line;
+
+	i = 0;
+	line = malloc(sizeof(char) * (ft_strlen(min) + 2));
+	while (min[j])
+	{
+		line[i] = min[j];
+		i++;
+		if (min[j] == '=')
+		{
+			line[i] = '\"';
+			i++;
+		}
+		j++;
+	}
+	line[i] = 0;
+	line = ft_strjoin(line, "\"");
+	line = ft_strjoin("declare -x ", line);
+	return (line);
 }
 
 char	**ft_make_export(t_data *data)
@@ -118,15 +143,14 @@ char	**ft_make_export(t_data *data)
 	min = find_min(data);
 	max = find_max(data);
 	matrix[0] = min;
-	j = 0;
+	j = 1;
 	while (j != i)
 	{
-		min = find_next(min, NULL, max, data);
-		matrix[j] = min;
+		min = find_next(min, max, data);
+		matrix[j] = ft_export_format(min);
 		j++;
 	}
 	matrix[j] = 0;
-	//fare funzione per la formattazzione prima di restituire la matrix
 	return (matrix);
 }
 
@@ -136,6 +160,8 @@ void	export(char *comm, t_data *data)
 		data->envp = add_var_to_env(data, comm);
 	else if (!comm)
 	{
+		if (data->export)
+			free_matrix(data->export);
 		data->export = ft_make_export(data);
 		ft_print_matrix(data->export);
 	}
