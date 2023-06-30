@@ -128,7 +128,7 @@ char	*ft_export_format(char *min)
 	i = 0;
 	j = 0;
 	flag = 0;
-	line = malloc(sizeof(char) * (ft_strlen(min) + 2));
+	line = ft_calloc(sizeof(char), (ft_strlen(min) + 2));
 	while (min[j])
 	{
 		line[i] = min[j];
@@ -141,9 +141,8 @@ char	*ft_export_format(char *min)
 		}
 		j++;
 	}
-	line[i] = 0;
-	line = ft_strjoin(line, "\"");
 	line = ft_strjoin("declare -x ", line);
+	line = ft_strjoin_free(line, "\"");
 	return (line);
 }
 //Crea la matrice di export prendendo le variabili in ordine alfabetico da envp
@@ -169,7 +168,6 @@ char	**ft_make_export(t_data *data)
 		matrix[j] = ft_export_format(min);
 		j++;
 	}
-	free(max);
 	matrix[j] = 0;
 	return (matrix);
 }
