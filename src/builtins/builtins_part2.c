@@ -102,10 +102,11 @@ char	*find_next(char *min, char *max, t_data *data)
 	i = 0;
 	while (data->envp[i])
 	{
-		if (ft_strcmp(max, data->envp[i]) > 0 && ft_strcmp(min, data->envp[i]) < 0)
+		//ft_printf("max: %s, min: %s\n", max, min);
+		if (max && ft_strcmp(max, data->envp[i]) > 0 && ft_strcmp(min, data->envp[i]) < 0)
 		{
-			if (max)
-				free(max);
+			// if (max)
+			//free(max);
 			max = ft_strdup(data->envp[i]);
 		}
 		i++;
@@ -168,6 +169,7 @@ char	**ft_make_export(t_data *data)
 		matrix[j] = ft_export_format(min);
 		j++;
 	}
+	free(max);
 	matrix[j] = 0;
 	return (matrix);
 }
