@@ -32,10 +32,9 @@ int		executor_handler(char **arguments) //o char ***arguments??
 		{
 			execute_command(arguments);
 		}
-
 }
 
-void	execute_builtin(char **builtin)
+void	execute_builtin(char **arguments)
 {
 		if (strcmp(arguments[1], "cd") == 1)
 			cd(arguments);
@@ -54,13 +53,6 @@ void	execute_builtin(char **builtin)
 	//	allora esegui echo()
 	//	ecc ecc
 }
-
-void	execute_command(char *command, char *arg, char **PATH)
-{
-
-
-}
-
 //processo unico 
 //
 //
