@@ -97,17 +97,18 @@ char	*find_max(t_data *data)
 //Trova la stringa col valore piu' piccolo dopo il minimo che gli viene passato
 char	*find_next(char *min, char *max, t_data *data)
 {
-	int	i;
+	int		i;
+	char	*next;
 
 	i = 0;
+	next = ft_strdup(max);
 	while (data->envp[i])
 	{
-		//ft_printf("max: %s, min: %s\n", max, min);
-		if (max && ft_strcmp(max, data->envp[i]) > 0 && ft_strcmp(min, data->envp[i]) < 0)
+		if (next && ft_strcmp(next, data->envp[i]) > 0 && \
+			ft_strcmp(min, data->envp[i]) < 0)
 		{
-			// if (max)
-			//free(max);
-			max = ft_strdup(data->envp[i]);
+			free(next);
+			next = ft_strdup(data->envp[i]);
 		}
 		i++;
 		if (data->envp[i] && ft_strncmp(data->envp[i], "_=", 2) == 0)
@@ -115,7 +116,7 @@ char	*find_next(char *min, char *max, t_data *data)
 	}
 	if (min)
 		free(min);
-	return (max);
+	return (next);
 }
 //Mette tutte le stringhe della matrice nel formato di come le stampa bash
 //(in sostanza: declare -x VAR_NAME="VALUE")
@@ -129,7 +130,7 @@ char	*ft_export_format(char *min)
 	i = 0;
 	j = 0;
 	flag = 0;
-	line = ft_calloc(sizeof(char), (ft_strlen(min) + 2));
+	line = malloc(sizeof(char) * (ft_strlen(min) + 2));
 	while (min[j])
 	{
 		line[i] = min[j];
@@ -142,6 +143,7 @@ char	*ft_export_format(char *min)
 		}
 		j++;
 	}
+	line[i] = '\0';
 	line = ft_strjoin("declare -x ", line);
 	line = ft_strjoin_free(line, "\"");
 	return (line);
