@@ -9,3 +9,15 @@ int	ft_strcmp(char *s1, char *s2)
 		i++;
 	return (s1[i] - s2[i]);
 }
+
+char	*ft_strjoin_export(char *line)
+{
+	char	*quote;
+	char	*decl;
+
+	decl = ft_strjoin("declare -x ", line);
+	free(line);
+	quote = ft_strjoin(decl, "\"");
+	free(decl);
+	return (quote);
+}

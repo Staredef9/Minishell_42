@@ -2,8 +2,8 @@
 #Makefile must at least contain the rules $(NAME), all, clean, fclean and re.
 
 NAME = nutShell
-
-SRCS = $(wildcard ./src/parser/*.c)  $(wildcard ./src/addictional_functions/*.c) $(wildcard ./src/builtins/*.c) $(wildcard ./src/main.c)
+#$(wildcard ./src/parser/*.c)
+SRCS =  $(wildcard ./src/addictional_functions/*.c) $(wildcard ./src/builtins/*.c) $(wildcard ./src/main.c)
 
 OBJS = $(SRCS:.c=.o)
 

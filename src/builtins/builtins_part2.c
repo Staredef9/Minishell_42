@@ -144,9 +144,7 @@ char	*ft_export_format(char *min)
 		j++;
 	}
 	line[i] = '\0';
-	line = ft_strjoin("declare -x ", line);
-	line = ft_strjoin_free(line, "\"");
-	return (line);
+	return (ft_strjoin_export(line));
 }
 //Crea la matrice di export prendendo le variabili in ordine alfabetico da envp
 char	**ft_make_export(t_data *data)
@@ -172,6 +170,8 @@ char	**ft_make_export(t_data *data)
 		j++;
 	}
 	free(max);
+	if (min)
+		free(min);
 	matrix[j] = 0;
 	return (matrix);
 }
