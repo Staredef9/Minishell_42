@@ -176,8 +176,28 @@ char	**ft_make_export(t_data *data)
 	return (matrix);
 }
 
+void	change_var_env(t_data *data, char *var, char *full_var)
+{
+	int	i;
+	int	line;
+
+	i = 0;
+	line = var_line(var, data->envp);
+	while (data->envp[i])
+	{
+		if (i == line)
+		{
+			free(data->envp[i]);
+			data->envp[i] = ft_strdup(full_var);
+		}
+		i++;
+	}
+}
+
 void	export(char *comm, t_data *data)
 {
+	char	**full;
+
 	if (!comm)
 	{
 		if (data->export)
@@ -186,5 +206,15 @@ void	export(char *comm, t_data *data)
 		ft_print_matrix(data->export);
 	}
 	else if (ft_check_value(comm))
-		data->envp = add_var_to_env(data, comm);
+	{
+		full = ft_split(comm, '=');
+		if (var_line(full[0], data->envp) < ft_matrixlen(data->envp))
+		{
+			ft_printf("\n\nline: %d, matrix: %d\n\n", var_line(full[0], data->envp), ft_matrixlen(data->envp));
+			change_var_env(data, full[0], comm);
+			free_matrix(full);
+		}
+		else
+			data->envp = add_var_to_env(data, comm);
+	}
 }

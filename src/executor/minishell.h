@@ -59,6 +59,7 @@ char	**copy_char_matrix(char **src);
 void	ft_print_matrix(char	**matrix);
 int		ft_env_search(char *arg, char **envp);
 int		var_line(char *var, char **matrix);
+int		ft_matrixlen(char **matrix);
 void	free_matrix(char **src);
 char    *ft_return_prompt(void);
 // char	*set_str_var(char *var_name, int value);

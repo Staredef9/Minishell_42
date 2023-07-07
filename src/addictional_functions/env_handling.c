@@ -22,15 +22,22 @@
 //restituisce in quale riga della matrice si trova la variabile
 int	var_line(char *var, char **matrix)
 {
-	int	i;
+	int		i;
+	char	**full;
 
 	i = 0;
 	while (matrix[i])
 	{
-		if (ft_strncmp(matrix[i], var, ft_strlen(var)) == 0)
+		full = ft_split(matrix[i], '=');
+		if (ft_strncmp(full[0], var, ft_strlen(full[0])) == 0)
+		{
+			free_matrix(full);
 			break ;
+		}
+		free_matrix(full);
 		i++;
 	}
+	ft_printf("\n\nlen: %d\n\n", ft_strlen(var));
 	return (i);
 }
 //Restituisce 1 se la variabile esiste, 0 se non esiste
