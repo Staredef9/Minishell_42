@@ -64,6 +64,7 @@ void	free_matrix(char **src);
 char    *ft_return_prompt(void);
 // char	*set_str_var(char *var_name, int value);
 char	**add_var_to_env(t_data *data, char *var);
+void	change_var_env(t_data *data, char *var, char *full_var);
 
 //executor
 int	executor_handler(char **arguments);
@@ -71,7 +72,7 @@ int	executor_handler(char **arguments);
 //builtins
 void	execute_builtin(char **arguments);
 void	echo(char *argument, char *option, t_data *data);
-void	cd(char *argument);
+void	cd(char *argument, t_data *data);
 void	pwd(void);
 void    unset(char *var, t_data *data);
 void	export(char *comm, t_data *data);

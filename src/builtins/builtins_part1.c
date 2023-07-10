@@ -1,22 +1,48 @@
 #include "../executor/minishell.h"
 
+char	*ft_remove_dollar(char *str)
+{
+	int		i;
+	int		j;
+	char	*new;
+
+	i = 1;
+	j = 0;
+	new = malloc(sizeof(char) * ft_strlen(str));
+	while (str[i])
+	{
+		new[j] = str[i];
+		j++;
+		i++;
+	}
+	new[j] = '\0';
+	free(str);
+	return (new);
+}
+
 void	echo(char *argument, char *option, t_data *data)
 {
-	int	line;
+	int		line;
+	char	*var;
 	char	*full;
 	char	**value;
 
-	if (ft_strcmp(option, "$") == 0)
+	
+	if (ft_strncmp(argument, "$", 1) == 0)
 	{
-		if (ft_env_search(argument, data->envp))
+		var = ft_remove_dollar(argument);
+		if (ft_env_search(var, data->envp))
 		{
-			line = var_line(argument, data->envp);
+			line = var_line(var, data->envp);
 			full = ft_strdup(data->envp[line]);
 			value = ft_split(full, '=');
-			printf("%s\n", value[1]);
+			printf("%s", value[1]);
+			if (!option)
+				printf("\n");
 			free(full);
 			free_matrix(value);
 		}
+		free(var);
 	}
 	//opzioni di argument: 
 	//$
@@ -26,33 +52,37 @@ void	echo(char *argument, char *option, t_data *data)
 	//come si fa a metterlo dentro le pipe e a dirgli di redirigere il suo output?
 }
 
-void	cd(char *argument)
+
+void	ft_replace_pwd(t_data *data, int line)
 {
-	//spostati di posizione dove dice l'argument, se 
-	//non esiste non fare nulla
-	char path[128];
-	getcwd(path, 128);
+	char	*old;
+	char	*pwd;
+	char	path[128];
+	char	*new_line;
+	char	**value;
 
-	DIR *directory = opendir(".");
-	if (directory == NULL)
-	{
-		ft_printf("Error opening directory\n");
-		return;
-	}
+	old = ft_strdup(data->envp[line]);
+	pwd = ft_strjoin("PWD=", getcwd(path, 128));
+	change_var_env(data, "PWD", pwd);
+	free(pwd);
+	value = ft_split(old, '=');
+	free(old);
+	new_line = ft_strjoin("OLDPWD=", value[1]);
+	change_var_env(data, "OLDPWD", new_line);
+	free(new_line);
+	free_matrix(value);
+}
+//spostati di posizione dove dice l'argument, se 
+//non esiste non fare nulla
+void	cd(char *argument, t_data *data)
+{
+	int		ret;
 
-	struct dirent *current_dir;
-	current_dir = readdir(directory);
-	while (current_dir)
-	{
-		if (ft_strncmp(current_dir->d_name, argument, ft_strlen(argument)) == 0)
-			break;
-		current_dir = readdir(directory);
-	}
-	if (current_dir == NULL)
+	ret = chdir(argument);
+	if (ret == -1)
 		ft_printf("nutShell: cd: %s: No such file or directory\n", argument);
-	char *slash_path = ft_strjoin(path, "/");
-	char *correct_path = ft_strjoin(slash_path, current_dir->d_name);
-	chdir(correct_path);
+	else
+		ft_replace_pwd(data, var_line("PWD", data->envp));
 }
 
 void	pwd(void)

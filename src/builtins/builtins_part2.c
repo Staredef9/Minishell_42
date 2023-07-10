@@ -210,7 +210,6 @@ void	export(char *comm, t_data *data)
 		full = ft_split(comm, '=');
 		if (var_line(full[0], data->envp) < ft_matrixlen(data->envp))
 		{
-			ft_printf("\n\nline: %d, matrix: %d\n\n", var_line(full[0], data->envp), ft_matrixlen(data->envp));
 			change_var_env(data, full[0], comm);
 			free_matrix(full);
 		}
