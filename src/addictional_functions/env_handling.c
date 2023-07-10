@@ -19,26 +19,6 @@
 //TODO:implementare ricerca valore in variabili
 //gestire sia ricerca di env senza che con $ sign.
 
-//restituisce in quale riga della matrice si trova la variabile
-int	var_line(char *var, char **matrix)
-{
-	int		i;
-	char	**full;
-
-	i = 0;
-	while (matrix[i])
-	{
-		full = ft_split(matrix[i], '=');
-		if (ft_strncmp(full[0], var, ft_strlen(full[0])) == 0)
-		{
-			free_matrix(full);
-			break ;
-		}
-		free_matrix(full);
-		i++;
-	}
-	return (i);
-}
 //Restituisce 1 se la variabile esiste, 0 se non esiste
 int	ft_env_search(char *arg, char **envp)
 {
@@ -53,17 +33,6 @@ int	ft_env_search(char *arg, char **envp)
 	}
 	return (0);
 }
-
-//Restituisce la stringa da aggiungere all'envp
-// char	*set_str_var(char *var_name, int value)
-// {
-// 	char	*s_value;
-
-// 	s_value = ft_itoa(value);
-// 	var_name = ft_strjoin(var_name, "=");
-// 	var_name = ft_strjoin(var_name, s_value);
-// 	return (var_name);
-// }
 //Stampa la matrice di char che gli viene passata (env copiata)
 void	ft_print_matrix(char **matrix)
 {
@@ -118,16 +87,21 @@ char	**add_var_to_env(t_data *data, char *var)
 	new_env[i] = 0;
 	return (new_env);
 }
-//Libera la matrice di char
-void 	free_matrix(char **src)
+
+void	change_var_env(t_data *data, char *var, char *full_var)
 {
-	int		i;
+	int	i;
+	int	line;
 
 	i = 0;
-	while (src[i])
+	line = var_line(var, data->envp);
+	while (data->envp[i])
 	{
-		free(src[i]);
+		if (i == line)
+		{
+			free(data->envp[i]);
+			data->envp[i] = ft_strdup(full_var);
+		}
 		i++;
 	}
-	free(src);
 }

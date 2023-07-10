@@ -69,6 +69,13 @@ void	change_var_env(t_data *data, char *var, char *full_var);
 //executor
 int	executor_handler(char **arguments);
 
+//export utils
+char	**ft_make_export(t_data *data);
+char	*ft_export_format(char *min);
+char	*find_next(char *min, char *max, t_data *data);
+char	*find_max(t_data *data);
+char	*find_min(t_data *data);
+
 //builtins
 void	execute_builtin(char **arguments);
 void	echo(char *argument, char *option, t_data *data);
