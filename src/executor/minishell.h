@@ -70,7 +70,7 @@ int	executor_handler(char **arguments);
 
 //builtins
 void	execute_builtin(char **arguments);
-void	echo(char *argument, char *option);
+void	echo(char *argument, char *option, t_data *data);
 void	cd(char *argument);
 void	pwd(void);
 void    unset(char *var, t_data *data);

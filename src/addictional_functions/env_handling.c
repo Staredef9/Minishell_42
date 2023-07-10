@@ -37,7 +37,6 @@ int	var_line(char *var, char **matrix)
 		free_matrix(full);
 		i++;
 	}
-	ft_printf("\n\nlen: %d\n\n", ft_strlen(var));
 	return (i);
 }
 //Restituisce 1 se la variabile esiste, 0 se non esiste

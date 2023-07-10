@@ -1,14 +1,26 @@
 #include "../executor/minishell.h"
 
-void	echo(char *argument, char *option)
+void	echo(char *argument, char *option, t_data *data)
 {
-	
-	if (option)
-		ft_printf("%s", argument);
-	//opzioni di argoment: 
+	int	line;
+	char	*full;
+	char	**value;
+
+	if (ft_strcmp(option, "$") == 0)
+	{
+		if (ft_env_search(argument, data->envp))
+		{
+			line = var_line(argument, data->envp);
+			full = ft_strdup(data->envp[line]);
+			value = ft_split(full, '=');
+			printf("%s\n", value[1]);
+			free(full);
+			free_matrix(value);
+		}
+	}
+	//opzioni di argument: 
 	//$
 	//$?
-
 	else
 		ft_printf("%s\n", argument);
 	//come si fa a metterlo dentro le pipe e a dirgli di redirigere il suo output?
