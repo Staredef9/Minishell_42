@@ -27,7 +27,6 @@ void	echo(char *argument, char *option, t_data *data)
 	char	*full;
 	char	**value;
 
-	
 	if (ft_strncmp(argument, "$", 1) == 0)
 	{
 		var = ft_remove_dollar(argument);

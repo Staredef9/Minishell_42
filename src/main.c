@@ -29,6 +29,7 @@ static void	ft_readline(t_data *data, char *print)
 		signal(SIGINT, siginthandler);
 		signal(SIGQUIT, SIG_IGN);
 		input = readline(print);
+		add_history(input);
 		if (!input || ft_strncmp(input, "exit", 4) == 0)
 			break ;
 		else if (ft_strncmp(input, "env", 3) == 0)
