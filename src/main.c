@@ -44,7 +44,6 @@ static void	ft_readline(t_data *data, char *print)
 			export("tumamma=24", data);
 		else if (ft_strncmp(input, "echo", 4) == 0)
 			echo(ft_strdup("$tumamma"), NULL, data);
-		//add_history(input);
 	}
 }
 
