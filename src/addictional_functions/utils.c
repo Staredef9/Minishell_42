@@ -41,7 +41,7 @@ char	*ft_strjoin_export(char *line)
 	free(decl);
 	return (quote);
 }
-
+//Restituisce il numero di righe della matrice di char
 int	ft_matrixlen(char **matrix)
 {
 	int	i;

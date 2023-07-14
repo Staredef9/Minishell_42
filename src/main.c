@@ -35,7 +35,7 @@ static void	ft_readline(t_data *data, char *print)
 		else if (ft_strncmp(input, "env", 3) == 0)
 			ft_print_matrix(data->envp);
 		else if (ft_strncmp(input, "cd", 2) == 0)
-			cd("/nfs/homes/ncortigi/progetti_42/minishell/Minishell_42/sc", data);
+			cd("src", data);
 		else if (ft_strncmp(input, "pwd", 3) == 0)
 			pwd();
 		else if (ft_strncmp(input, "unset", 5) == 0)
@@ -44,6 +44,7 @@ static void	ft_readline(t_data *data, char *print)
 			export("tumamma=24", data);
 		else if (ft_strncmp(input, "echo", 4) == 0)
 			echo(ft_strdup("$tumamma"), NULL, data);
+		free(input);
 	}
 }
 
