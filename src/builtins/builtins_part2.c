@@ -48,7 +48,8 @@ int	ft_check_value(char *val)
 			return (0);
 		i++;
 	}
-	i = 0;
+	if (val[i] == '=')
+		i++;
 	while (val[i])
 	{
 		if (val[i] < '0' || (val[i] > '9' && val[i] < 'A') || \
